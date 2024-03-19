@@ -68,10 +68,11 @@ const Orders = () => {
             }
             className=" form-control form-select"
           >
-            <option value="Processed">Processed</option>
+            <option value="Proceed">Proceed</option>
             <option value="Shipped">Shipped</option>
-            <option value="Out For Delivery">Out For Delivery</option>
-            <option value="Deliveryed">Deliveryed</option>
+            <option value="On the way">On the way</option>
+            <option value="Delivered">Delivered</option>
+            <option value="On the way">Canceled</option>
           </select>
         </>
       ),

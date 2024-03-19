@@ -229,7 +229,7 @@ const MainLayout = () => {
             </div>
 
             <div className="d-flex gap-3 align-items-center dropdown">
-              <div className="rounded-circle overflow-hidden">
+              {/* <div className="rounded-circle overflow-hidden">
                 <img
                   width={32}
                   height={32}
@@ -237,7 +237,7 @@ const MainLayout = () => {
                   alt=""
                   className="rounded-circle"
                 />
-              </div>
+              </div> */}
               <div
                 role="button"
                 id="dropdownMenuLink"
@@ -245,8 +245,8 @@ const MainLayout = () => {
                 aria-expanded="false"
                 className="text-white"
               >
-                <h5 className="mb-0">Darshan</h5>
-                <p className="mb-0">darshanadmin@gmail.com</p>
+                <h5 className="mb-0">clicon</h5>
+                <p className="mb-0">clicon@gmail.com</p>
               </div>
               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li>
