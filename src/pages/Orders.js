@@ -41,8 +41,6 @@ const Orders = () => {
 
   const orderState = useSelector((state) => state.auth.orders.alluserorders);
 
-  console.log(orderState);
-
   const updateOrderStatus = (a, b) => {
     dispatch(updateOrder({ id: a, status: b }));
   };
@@ -72,7 +70,7 @@ const Orders = () => {
             <option value="Shipped">Shipped</option>
             <option value="On the way">On the way</option>
             <option value="Delivered">Delivered</option>
-            <option value="On the way">Canceled</option>
+            <option value="Canceled">Canceled</option>
           </select>
         </>
       ),
