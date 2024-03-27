@@ -1,8 +1,12 @@
+import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
+
 import { Table } from 'antd';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getOrders, updateOrder } from '../features/auth/authSlice';
+import { useState } from 'react';
 
 const columns = [
   {
@@ -34,6 +38,18 @@ const columns = [
 
 const Orders = () => {
   const dispatch = useDispatch();
+
+  const currentDate = new Date();
+  const [startDate, setStartDate] = useState(
+    currentDate.setMonth(currentDate.getMonth() - 1)
+  );
+  const [endDate, setEndDate] = useState(currentDate);
+
+  const handleDateChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
 
   useEffect(() => {
     dispatch(getOrders());
@@ -79,8 +95,17 @@ const Orders = () => {
 
   return (
     <div>
-      <div>
-        <h3 className="mb-4 title">Orders</h3>
+      <div className="d-flex justify-content-between align-items-center">
+        <h3 className="mb-4 title" style={{ width: '100%' }}>
+          Orders
+        </h3>
+        <DatePicker
+          selected={startDate}
+          onChange={handleDateChange}
+          startDate={startDate}
+          endDate={endDate}
+          selectsRange
+        />
       </div>
       <div>{<Table columns={columns} dataSource={data1} />}</div>
     </div>
