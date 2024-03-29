@@ -32,7 +32,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isSuccess && user?._id) {
-      navigate('admin');
+      navigate('/admin/customers');
     } else {
       navigate('/');
     }
@@ -40,7 +40,7 @@ const Login = () => {
 
   useEffect(() => {
     if (!isLoading && user) {
-      navigate('/admin');
+      navigate('/admin/customers');
     }
   }, [isLoading, user]);
 

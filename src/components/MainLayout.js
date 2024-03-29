@@ -92,11 +92,11 @@ const MainLayout = () => {
               }
             }}
             items={[
-              {
-                key: '',
-                icon: <AiOutlineDashboard className="fs-4" />,
-                label: 'Dashboard',
-              },
+              // {
+              //   key: '',
+              //   icon: <AiOutlineDashboard className="fs-4" />,
+              //   label: 'Dashboard',
+              // },
               {
                 key: 'customers',
                 icon: <AiOutlineUser className="fs-4" />,

@@ -8,8 +8,11 @@ const login = async (user) => {
   }
   return response.data;
 };
-const getOrders = async () => {
-  const response = await axios.get(`${base_url}user/getallorders`, config);
+const getOrders = async (startDate, endDate) => {
+  const response = await axios.get(
+    `${base_url}user/getallorders?startDate=${startDate}&endDate=${endDate}`,
+    config
+  );
 
   return response.data;
 };
