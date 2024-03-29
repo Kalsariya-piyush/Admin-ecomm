@@ -75,7 +75,6 @@ const Addblog = () => {
       url: i.url,
     });
   });
-  console.log(img);
   useEffect(() => {
     formik.values.images = img;
   }, [blogImages]);

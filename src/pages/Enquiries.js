@@ -1,49 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { Table } from "antd";
-import { useDispatch, useSelector } from "react-redux";
+import { Table } from 'antd';
+import { AiFillDelete, AiOutlineEye } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import CustomModal from '../components/CustomModal';
 import {
   deleteAEnquiry,
   getEnquiries,
   resetState,
   updateAEnquiry,
-} from "../features/enquiry/enquirySlice";
-import { AiFillDelete, AiOutlineEye } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import CustomModal from "../components/CustomModal";
+} from '../features/enquiry/enquirySlice';
 
 const columns = [
   {
-    title: "SNo",
-    dataIndex: "key",
+    title: 'SNo',
+    dataIndex: 'key',
   },
   {
-    title: "Name",
-    dataIndex: "name",
+    title: 'Name',
+    dataIndex: 'name',
   },
   {
-    title: "Email",
-    dataIndex: "email",
+    title: 'Email',
+    dataIndex: 'email',
   },
   {
-    title: "Mobile",
-    dataIndex: "mobile",
+    title: 'Mobile',
+    dataIndex: 'mobile',
   },
   {
-    title: "Staus",
-    dataIndex: "status",
+    title: 'Staus',
+    dataIndex: 'status',
   },
 
   {
-    title: "Action",
-    dataIndex: "action",
+    title: 'Action',
+    dataIndex: 'action',
   },
 ];
 
 const Enquiries = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [enqId, setenqId] = useState("");
+  const [enqId, setenqId] = useState('');
   const showModal = (e) => {
     setOpen(true);
     setenqId(e);
@@ -68,7 +68,7 @@ const Enquiries = () => {
         <>
           <select
             name=""
-            defaultValue={enqState[i].status ? enqState[i].status : "Submitted"}
+            defaultValue={enqState[i].status ? enqState[i].status : 'Submitted'}
             className="form-control form-select"
             id=""
             onChange={(e) => setEnquiryStatus(e.target.value, enqState[i]._id)}
@@ -107,9 +107,10 @@ const Enquiries = () => {
   const deleteEnq = (e) => {
     dispatch(deleteAEnquiry(e));
     setOpen(false);
-    setTimeout(() => {
+
+    for (let i = 0; i <= 5; i++) {
       dispatch(getEnquiries());
-    }, 100);
+    }
   };
   return (
     <div>

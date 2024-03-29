@@ -1,35 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { Table } from "antd";
-import { BiEdit } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Table } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
+import { BiEdit } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import CustomModal from '../components/CustomModal';
 import {
   deleteABrand,
   getBrands,
   resetState,
-} from "../features/brand/brandSlice";
-import CustomModal from "../components/CustomModal";
+} from '../features/brand/brandSlice';
 
 const columns = [
   {
-    title: "SNo",
-    dataIndex: "key",
+    title: 'SNo',
+    dataIndex: 'key',
   },
   {
-    title: "Name",
-    dataIndex: "name",
+    title: 'Name',
+    dataIndex: 'name',
     sorter: (a, b) => a.name.length - b.name.length,
   },
   {
-    title: "Action",
-    dataIndex: "action",
+    title: 'Action',
+    dataIndex: 'action',
   },
 ];
 
 const Brandlist = () => {
   const [open, setOpen] = useState(false);
-  const [brandId, setbrandId] = useState("");
+  const [brandId, setbrandId] = useState('');
   const showModal = (e) => {
     setOpen(true);
     setbrandId(e);
@@ -39,12 +39,14 @@ const Brandlist = () => {
     setOpen(false);
   };
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(resetState());
     dispatch(getBrands());
   }, []);
+
   const brandState = useSelector((state) => state.brand.brands);
-  const data1 = [];
+  let data1 = [];
   for (let i = 0; i < brandState.length; i++) {
     data1.push({
       key: i + 1,
@@ -69,18 +71,20 @@ const Brandlist = () => {
   }
   const deleteBrand = (e) => {
     dispatch(deleteABrand(e));
-
     setOpen(false);
-    setTimeout(() => {
+
+    for (let i = 0; i <= 5; i++) {
       dispatch(getBrands());
-    }, 100);
+    }
   };
+
   return (
     <div>
       <h3 className="mb-4 title">Brands</h3>
       <div>
         <Table columns={columns} dataSource={data1} />
       </div>
+
       <CustomModal
         hideModal={hideModal}
         open={open}

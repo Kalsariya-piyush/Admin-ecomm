@@ -12,7 +12,11 @@ import CustomInput from '../components/CustomInput';
 import { getBrands } from '../features/brand/brandSlice';
 import { getColors } from '../features/color/colorSlice';
 import { getCategories } from '../features/pcategory/pcategorySlice';
-import { createProducts, resetState } from '../features/product/productSlice';
+import {
+  createProducts,
+  getAProduct,
+  resetState,
+} from '../features/product/productSlice';
 import { delImg, uploadImg } from '../features/upload/uploadSlice';
 let schema = yup.object().shape({
   title: yup.string().required('Title is Required'),
@@ -33,7 +37,7 @@ const Addproduct = () => {
   const navigate = useNavigate();
   const [color, setColor] = useState([]);
   const [images, setImages] = useState([]);
-  console.log(color);
+
   useEffect(() => {
     dispatch(getBrands());
     dispatch(getCategories());
@@ -66,7 +70,7 @@ const Addproduct = () => {
     if (isSuccess && createdProduct) {
       toast.success('Product Added Successfullly!');
       setTimeout(() => {
-        window.open('/admin/list-product', '_self');
+        window.location.href = '/admin/list-product';
       }, 1000);
     }
     if (isError) {
@@ -95,15 +99,15 @@ const Addproduct = () => {
 
   const formik = useFormik({
     initialValues: {
-      title: title || '',
-      description: description || '',
-      price: price || '',
-      brand: brand || '',
-      category: category || '',
-      tags: tags || '',
-      color: pColor || '',
-      quantity: quantity || '',
-      images: pImages || '',
+      title: '',
+      description: '',
+      price: '',
+      brand: '',
+      category: '',
+      tags: '',
+      color: '',
+      quantity: '',
+      images: '',
     },
     validationSchema: schema,
     onSubmit: (values) => {
@@ -120,8 +124,31 @@ const Addproduct = () => {
   });
   const handleColors = (e) => {
     setColor(e);
-    console.log(color);
   };
+
+  useEffect(() => {
+    if (getProductId !== undefined) {
+      dispatch(getAProduct(getProductId));
+      img.push(pImages);
+    }
+  }, [getProductId]);
+
+  useEffect(() => {
+    if (getProductId !== undefined && !isLoading) {
+      formik.setValues({
+        title: title,
+        description: description,
+        price: price,
+        brand: brand,
+        category: category,
+        tags: tags,
+        color: pColor,
+        quantity: quantity,
+        images: pImages,
+      });
+    }
+  }, [getProductId, isLoading]);
+
   return (
     <div>
       <h3 className="mb-4 title">

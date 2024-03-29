@@ -39,13 +39,13 @@ const Addcat = () => {
     if (isSuccess && createdCategory) {
       toast.success('Category Added Successfullly!');
       setTimeout(() => {
-        window.open('/admin/list-category');
+        window.location.href = '/admin/list-category';
       }, 1000);
     }
     if (isSuccess && updatedCategory) {
       toast.success('Category Updated Successfullly!');
       setTimeout(() => {
-        window.open('/admin/list-category');
+        window.location.href = '/admin/list-category';
       }, 1000);
     }
     if (isError) {

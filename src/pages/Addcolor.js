@@ -39,13 +39,13 @@ const Addcolor = () => {
     if (isSuccess && createdColor) {
       toast.success('Color Added Successfullly!');
       setTimeout(() => {
-        window.open('/admin/list-color');
+        window.location.href = '/admin/list-color';
       }, 1000);
     }
     if (isSuccess && updatedColor) {
       toast.success('Color Updated Successfullly!');
       setTimeout(() => {
-        window.open('/admin/list-color');
+        window.location.href = '/admin/list-color';
       }, 1000);
     }
     if (isError) {

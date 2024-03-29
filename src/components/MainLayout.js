@@ -2,14 +2,12 @@ import { Layout, Menu, theme } from 'antd';
 import React, { useState } from 'react';
 import {
   AiOutlineBgColors,
-  AiOutlineDashboard,
   AiOutlineShoppingCart,
   AiOutlineUser,
 } from 'react-icons/ai';
 import { BiCategoryAlt, BiUserCircle } from 'react-icons/bi';
 import { FaBloggerB, FaClipboardList } from 'react-icons/fa';
 import { ImBlog } from 'react-icons/im';
-import { RiCouponLine } from 'react-icons/ri';
 import { SiBrandfolder } from 'react-icons/si';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -154,23 +152,23 @@ const MainLayout = () => {
                 icon: <FaClipboardList className="fs-4" />,
                 label: 'Orders',
               },
-              {
-                key: 'marketing',
-                icon: <RiCouponLine className="fs-4" />,
-                label: 'Marketing',
-                children: [
-                  {
-                    key: 'coupon',
-                    icon: <ImBlog className="fs-4" />,
-                    label: 'Add Coupon',
-                  },
-                  {
-                    key: 'coupon-list',
-                    icon: <RiCouponLine className="fs-4" />,
-                    label: 'Coupon List',
-                  },
-                ],
-              },
+              // {
+              //   key: 'marketing',
+              //   icon: <RiCouponLine className="fs-4" />,
+              //   label: 'Marketing',
+              //   children: [
+              //     {
+              //       key: 'coupon',
+              //       icon: <ImBlog className="fs-4" />,
+              //       label: 'Add Coupon',
+              //     },
+              //     {
+              //       key: 'coupon-list',
+              //       icon: <RiCouponLine className="fs-4" />,
+              //       label: 'Coupon List',
+              //     },
+              //   ],
+              // },
               {
                 key: 'blogs',
                 icon: <FaBloggerB className="fs-4" />,
@@ -186,16 +184,16 @@ const MainLayout = () => {
                     icon: <FaBloggerB className="fs-4" />,
                     label: 'Blog List',
                   },
-                  {
-                    key: 'blog-category',
-                    icon: <ImBlog className="fs-4" />,
-                    label: 'Add Blog Category',
-                  },
-                  {
-                    key: 'blog-category-list',
-                    icon: <FaBloggerB className="fs-4" />,
-                    label: 'Blog Category List',
-                  },
+                  // {
+                  //   key: 'blog-category',
+                  //   icon: <ImBlog className="fs-4" />,
+                  //   label: 'Add Blog Category',
+                  // },
+                  // {
+                  //   key: 'blog-category-list',
+                  //   icon: <FaBloggerB className="fs-4" />,
+                  //   label: 'Blog Category List',
+                  // },
                 ],
               },
               {

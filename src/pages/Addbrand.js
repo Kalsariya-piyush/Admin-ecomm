@@ -41,13 +41,13 @@ const Addbrand = () => {
     if (isSuccess && createdBrand) {
       toast.success('Brand Added Successfullly!');
       setTimeout(() => {
-        window.open('/admin/list-brand');
+        window.location.href = '/admin/list-brand';
       }, 1000);
     }
     if (isSuccess && updatedBrand) {
       toast.success('Brand Updated Successfullly!');
       setTimeout(() => {
-        window.open('/admin/list-brand');
+        window.location.href = '/admin/list-brand';
       }, 1000);
     }
 

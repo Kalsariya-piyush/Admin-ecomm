@@ -90,12 +90,12 @@ const Productlist = () => {
     });
   }
 
-  const deleteProductById = () => {
-    dispatch(deleteAProduct(productId));
+  const deleteProductById = (e) => {
+    dispatch(deleteAProduct(e));
 
-    setTimeout(() => {
+    for (let index = 0; index <= 5; index++) {
       dispatch(getProducts());
-    }, 1000);
+    }
     setOpen(false);
   };
 
@@ -110,7 +110,7 @@ const Productlist = () => {
         hideModal={hideModal}
         open={open}
         performAction={() => {
-          deleteProductById();
+          deleteProductById(productId);
         }}
         title="Are you sure you want to delete this blog?"
       />

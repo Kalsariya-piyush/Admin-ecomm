@@ -15,7 +15,6 @@ import Categorylist from './pages/Categorylist';
 import Colorlist from './pages/Colotlist';
 import Couponlist from './pages/Couponlist';
 import Customers from './pages/Customers';
-import Dashboard from './pages/Dashboard';
 import Enquiries from './pages/Enquiries';
 import Forgotpassword from './pages/Forgotpassword';
 import Login from './pages/Login';
@@ -32,7 +31,8 @@ function App() {
         <Route path="/reset-password" element={<Resetpassword />} />
         <Route path="/forgot-password" element={<Forgotpassword />} />
         <Route path="/admin" element={<MainLayout />}>
-          <Route index element={<Dashboard />} />
+          {/* <Route index element={<Dashboard />} /> */}
+          <Route index element={<Customers />} />
           <Route path="enquiries" element={<Enquiries />} />
           <Route path="enquiries/:id" element={<ViewEnq />} />
           <Route path="blog-list" element={<Bloglist />} />

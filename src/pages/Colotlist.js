@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { Table } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteAColor, getColors } from "../features/color/colorSlice";
-import { BiEdit } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import CustomModal from "../components/CustomModal";
+import { Table } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
+import { BiEdit } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import CustomModal from '../components/CustomModal';
+import { deleteAColor, getColors } from '../features/color/colorSlice';
 
 const columns = [
   {
-    title: "SNo",
-    dataIndex: "key",
+    title: 'SNo',
+    dataIndex: 'key',
   },
   {
-    title: "Name",
-    dataIndex: "name",
+    title: 'Name',
+    dataIndex: 'name',
   },
   {
-    title: "Action",
-    dataIndex: "action",
+    title: 'Action',
+    dataIndex: 'action',
   },
 ];
 
 const Colorlist = () => {
   const [open, setOpen] = useState(false);
-  const [colorId, setcolorId] = useState("");
+  const [colorId, setcolorId] = useState('');
   const showModal = (e) => {
     setOpen(true);
     setcolorId(e);
@@ -65,9 +65,9 @@ const Colorlist = () => {
     dispatch(deleteAColor(e));
 
     setOpen(false);
-    setTimeout(() => {
+    for (let i = 0; i <= 5; i++) {
       dispatch(getColors());
-    }, 100);
+    }
   };
   return (
     <div>

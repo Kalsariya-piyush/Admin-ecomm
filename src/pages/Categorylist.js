@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { Table } from "antd";
-import { BiEdit } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Table } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
+import { BiEdit } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import CustomModal from '../components/CustomModal';
 import {
   deleteAProductCategory,
   getCategories,
   resetState,
-} from "../features/pcategory/pcategorySlice";
-import CustomModal from "../components/CustomModal";
+} from '../features/pcategory/pcategorySlice';
 
 const columns = [
   {
-    title: "SNo",
-    dataIndex: "key",
+    title: 'SNo',
+    dataIndex: 'key',
   },
   {
-    title: "Name",
-    dataIndex: "name",
+    title: 'Name',
+    dataIndex: 'name',
     sorter: (a, b) => a.name.length - b.name.length,
   },
 
   {
-    title: "Action",
-    dataIndex: "action",
+    title: 'Action',
+    dataIndex: 'action',
   },
 ];
 
 const Categorylist = () => {
   const [open, setOpen] = useState(false);
-  const [pCatId, setpCatId] = useState("");
+  const [pCatId, setpCatId] = useState('');
   const showModal = (e) => {
     setOpen(true);
     setpCatId(e);
@@ -71,9 +71,9 @@ const Categorylist = () => {
   const deleteCategory = (e) => {
     dispatch(deleteAProductCategory(e));
     setOpen(false);
-    setTimeout(() => {
+    for (let i = 0; i <= 5; i++) {
       dispatch(getCategories());
-    }, 100);
+    }
   };
   return (
     <div>

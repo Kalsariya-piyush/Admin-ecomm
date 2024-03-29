@@ -1,34 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { Table } from "antd";
-import { BiEdit } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteABlog, getBlogs, resetState } from "../features/blogs/blogSlice";
-import CustomModal from "../components/CustomModal";
+import { Table } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
+import { BiEdit } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import CustomModal from '../components/CustomModal';
+import { deleteABlog, getBlogs, resetState } from '../features/blogs/blogSlice';
 
 const columns = [
   {
-    title: "SNo",
-    dataIndex: "key",
+    title: 'SNo',
+    dataIndex: 'key',
   },
   {
-    title: "Title",
-    dataIndex: "name",
+    title: 'Title',
+    dataIndex: 'name',
   },
   {
-    title: "Category",
-    dataIndex: "category",
+    title: 'Category',
+    dataIndex: 'category',
   },
   {
-    title: "Action",
-    dataIndex: "action",
+    title: 'Action',
+    dataIndex: 'action',
   },
 ];
 
 const Bloglist = () => {
   const [open, setOpen] = useState(false);
-  const [blogId, setblogId] = useState("");
+  const [blogId, setblogId] = useState('');
   const showModal = (e) => {
     setOpen(true);
     setblogId(e);
@@ -72,9 +72,10 @@ const Bloglist = () => {
     dispatch(deleteABlog(e));
 
     setOpen(false);
-    setTimeout(() => {
+
+    for (let i = 0; i <= 5; i++) {
       dispatch(getBlogs());
-    }, 100);
+    }
   };
   return (
     <div>
