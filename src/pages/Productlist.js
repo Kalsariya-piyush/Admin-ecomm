@@ -90,8 +90,8 @@ const Productlist = () => {
     });
   }
 
-  const deleteProductById = (e) => {
-    dispatch(deleteAProduct(e));
+  const deleteProductById = async (e) => {
+    await dispatch(deleteAProduct(e));
 
     for (let index = 0; index <= 5; index++) {
       dispatch(getProducts());

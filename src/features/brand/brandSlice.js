@@ -1,8 +1,8 @@
-import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
-import brandService from "./brandService";
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import brandService from './brandService';
 
 export const getBrands = createAsyncThunk(
-  "brand/get-brands",
+  'brand/get-brands',
   async (thunkAPI) => {
     try {
       return await brandService.getBrands();
@@ -12,7 +12,7 @@ export const getBrands = createAsyncThunk(
   }
 );
 export const getABrand = createAsyncThunk(
-  "brand/get-brand",
+  'brand/get-brand',
   async (id, thunkAPI) => {
     try {
       return await brandService.getBrand(id);
@@ -22,7 +22,7 @@ export const getABrand = createAsyncThunk(
   }
 );
 export const createBrand = createAsyncThunk(
-  "brand/create-brand",
+  'brand/create-brand',
   async (brandData, thunkAPI) => {
     try {
       return await brandService.createBrand(brandData);
@@ -32,7 +32,7 @@ export const createBrand = createAsyncThunk(
   }
 );
 export const updateABrand = createAsyncThunk(
-  "brand/update-brand",
+  'brand/update-brand',
   async (brand, thunkAPI) => {
     try {
       return await brandService.updateBrand(brand);
@@ -43,7 +43,7 @@ export const updateABrand = createAsyncThunk(
 );
 
 export const deleteABrand = createAsyncThunk(
-  "brand/delete-brand",
+  'brand/delete-brand',
   async (id, thunkAPI) => {
     try {
       return await brandService.deleteBrand(id);
@@ -53,17 +53,17 @@ export const deleteABrand = createAsyncThunk(
   }
 );
 
-export const resetState = createAction("Reset_all");
+export const resetState = createAction('Reset_all');
 
 const initialState = {
   brands: [],
   isError: false,
   isLoading: false,
   isSuccess: false,
-  message: "",
+  message: '',
 };
 export const brandSlice = createSlice({
-  name: "brands",
+  name: 'brands',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

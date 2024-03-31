@@ -16,6 +16,7 @@ import {
   createProducts,
   getAProduct,
   resetState,
+  updateAProduct,
 } from '../features/product/productSlice';
 import { delImg, uploadImg } from '../features/upload/uploadSlice';
 let schema = yup.object().shape({
@@ -119,6 +120,9 @@ const Addproduct = () => {
           dispatch(resetState());
         }, 3000);
       } else {
+        const data = { id: getProductId, productData: values };
+        dispatch(updateAProduct(data));
+        dispatch(resetState());
       }
     },
   });
